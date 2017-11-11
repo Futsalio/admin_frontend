@@ -6,6 +6,7 @@ import enUS from 'antd/lib/locale-provider/en_US';
 
 import Store from './stores/index.js';
 import Homepage from './components/Homepage/Homepage';
+import Loginpage from './components/Loginpage/Loginpage';
 import { NoMatch } from './components/404';
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Homepage} />
+            <Route exact path="/login" component={Loginpage} />
             <Route component={NoMatch}/>
           </Switch>
         </BrowserRouter>
