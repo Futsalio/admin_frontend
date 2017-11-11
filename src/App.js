@@ -1,24 +1,22 @@
-import React, { Component } from 'react';
-import { Button } from 'antd';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { LocaleProvider } from 'antd';
+import enUS from 'antd/lib/locale-provider/en_US';
 
-import logo from './logo.svg';
-import './App.css';
+import Homepage from './components/Homepage/Homepage';
+import { NoMatch } from './components/404';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-          <Button type="primary">Button</Button>
-        </p>
-      </div>
-    );
-  }
+const App = () => {
+  return (
+      <LocaleProvider locale={enUS}>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Homepage} />
+            <Route component={NoMatch}/>
+          </Switch>
+        </BrowserRouter>
+      </LocaleProvider>
+  );
 }
 
 export default App;
