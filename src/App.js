@@ -16,11 +16,11 @@ const App = () => {
       <LocaleProvider locale={enUS}>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={Redirectpage} />
-            <Route exact path="/login" component={Loginpage} />
-            <Route exact path="/dashboard" component={Dashboardpage} />
-            <Route exact path="/partner" component={Partnerpage} />
-            <Route component={NoMatch}/>
+            <Route exact path = '/' component = {Redirectpage} />
+            <Route exact path = '/login' component = {Loginpage} />
+            <Route exact path = '/dashboard' component = {Dashboardpage} />
+            <Route exact path = '/partner' component = {Partnerpage} />
+            <Route component = {NoMatch}/>
           </Switch>
         </BrowserRouter>
       </LocaleProvider>

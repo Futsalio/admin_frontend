@@ -59,23 +59,35 @@ class NormalLoginForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
 
     return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
+      <Form onSubmit = {this.handleSubmit} className = 'login-form'>
         <FormItem>
           {getFieldDecorator('userName', {
             rules: [{ required: true, message: 'Please input your username!' }],
           })(
-            <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Username" />
+            <Input
+              prefix = {<Icon type = 'user' style = {{ fontSize: 13 }} />}
+              placeholder = 'Username' />
           )}
         </FormItem>
         <FormItem>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Please input your Password!' }],
           })(
-            <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password" />
+            <Input
+              prefix = {<Icon type = 'lock' style = {{ fontSize: 13 }} />}
+              type = 'password'
+              placeholder = 'Password' />
           )}
         </FormItem>
         {this.state.modal &&
-          <Alert message={this.props.error} type="error" style={{ marginBottom: '1em' }} onClose={this._closeModal} showIcon closable/>
+          <Alert
+            message = {this.props.error}
+            type = 'error'
+            style = {{ marginBottom: '1em' }}
+            onClose = {this._closeModal}
+            showIcon
+            closable
+          />
         }
         <FormItem>
           {getFieldDecorator('remember', {
@@ -84,11 +96,11 @@ class NormalLoginForm extends React.Component {
           })(
             <Checkbox>Remember me</Checkbox>
           )}
-          <a className="login-forgot" href="">Forgot password</a>
-          <Button type="primary" htmlType="submit" className="login-btn">
+          <a className = 'login-forgot' href = ''>Forgot password</a>
+          <Button type = 'primary' htmlType = 'submit' className = 'login-btn'>
             Log in
           </Button>
-          {/* Or <a href="">register now!</a> */}
+          {/* Or <a href = ''>register now!</a> */}
         </FormItem>
       </Form>
     );

@@ -8,14 +8,14 @@ export default class Partnerpage extends React.Component {
   render() {
     if( !checkLogin() || isOwner() || isAdminFutsal() ) {
       return(
-        <Redirect to='/login' />
+        <Redirect to = '/login' />
       );
     }
 
     return (
       <div>
         <p>Partnerpage</p>
-        <Button type="primary" onClick={logout}>Logout</Button>
+        <Button type = 'primary' onClick = {logout}>Logout</Button>
       </div>
     );
   }

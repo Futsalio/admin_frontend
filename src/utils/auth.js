@@ -1,5 +1,5 @@
 export function checkLogin () {
-  if(localStorage.getItem("futsalio")) {
+  if(localStorage.getItem('futsalio')) {
     return true;
   }
 
@@ -7,13 +7,13 @@ export function checkLogin () {
 }
 
 export function logout() {
-  localStorage.removeItem("futsalio");
+  localStorage.removeItem('futsalio');
 
   return window.location.href = '/login';
 }
 
 export function isSuperAdmin() {
-  let user = JSON.parse(localStorage.getItem("futsalio"));
+  let user = JSON.parse(localStorage.getItem('futsalio'));
 
   if(user.role === 'SA') {
     return true;
@@ -23,7 +23,7 @@ export function isSuperAdmin() {
 }
 
 export function isAdmin() {
-  let user = JSON.parse(localStorage.getItem("futsalio"));
+  let user = JSON.parse(localStorage.getItem('futsalio'));
 
   if(user.role === 'AF') {
     return true;
@@ -33,7 +33,7 @@ export function isAdmin() {
 }
 
 export function isOwner() {
-  let user = JSON.parse(localStorage.getItem("futsalio"));
+  let user = JSON.parse(localStorage.getItem('futsalio'));
 
   if(user.role === 'OT') {
     return true;
@@ -43,7 +43,7 @@ export function isOwner() {
 }
 
 export function isAdminFutsal() {
-  let user = JSON.parse(localStorage.getItem("futsalio"));
+  let user = JSON.parse(localStorage.getItem('futsalio'));
 
   if(user.role === 'AT') {
     return true;
