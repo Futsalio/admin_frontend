@@ -1,0 +1,8 @@
+{
+  "user": [
+    { "id": 1, "name": "Tirta", "role": "SA", "username": "root", "password": "futsalio" },
+    { "id": 2, "name": "Randy", "role": "AF", "username": "admin", "password": "futsalio" },
+    { "id": 3, "name": "Erwin", "role": "OT", "username": "owner", "password": "futsalio" },
+    { "id": 4, "name": "Gita", "role": "AT", "username": "admin_futsal", "password": "futsalio" }
+  ]
+}
