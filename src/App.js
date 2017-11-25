@@ -5,7 +5,9 @@ import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 
 import Store from './stores/index.js';
-import Homepage from './components/Homepage/Homepage';
+import { Redirectpage } from './components/Redirectpage';
+import Dashboardpage from './components/Dashboardpage/Dashboardpage';
+import Partnerpage from './components/Partnerpage/Partnerpage';
 import Loginpage from './components/Loginpage/Loginpage';
 import { NoMatch } from './components/404';
 
@@ -15,8 +17,10 @@ const App = () => {
       <LocaleProvider locale={enUS}>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={Homepage} />
+            <Route exact path="/" component={Redirectpage} />
             <Route exact path="/login" component={Loginpage} />
+            <Route exact path="/dashboard" component={Dashboardpage} />
+            <Route exact path="/partner" component={Partnerpage} />
             <Route component={NoMatch}/>
           </Switch>
         </BrowserRouter>
