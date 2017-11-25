@@ -4,6 +4,7 @@ import { Redirect } from 'react-router';
 
 import { fetchUser, login } from '../../actions/userActions';
 import './Loginpage.css';
+import { checkLogin } from '../../utils/auth';
 import Loginform from './Loginform';
 
 class Loginpage extends React.Component {
@@ -15,7 +16,7 @@ class Loginpage extends React.Component {
   }
 
   render() {
-    if(this.props.isLogin) {
+    if(checkLogin()) {
       return(
         <Redirect to='/dashboard' />
       );

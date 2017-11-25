@@ -9,7 +9,7 @@ class NormalLoginForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(this.props !== nextProps) {
+    if(this.props.error !== nextProps.error) {
       if(nextProps.error) {
         this.setState({
           modal: true
@@ -38,6 +38,7 @@ class NormalLoginForm extends React.Component {
           for(let i = 0; i < userData.length; i++) {
             if(userData[i].username === username && userData[i].password === password) {
               loginResult = 'success';
+              localStorage.setItem("futsalio", JSON.stringify(userData[i]));
             } else if(userData[i].username === username && userData[i].password !== password) {
               loginResult = 'wrong password';
             }

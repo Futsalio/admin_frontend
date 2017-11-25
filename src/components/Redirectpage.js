@@ -5,9 +5,9 @@ import { Button } from 'antd';
 
 import './Redirectpage.css';
 
-export const Redirectpage = () =>  (
-  <Redirect to='/dashboard' />
-);
+export const Redirectpage = () => {
+  return <Redirect to='/dashboard' />
+}
 
 export const NoMatch = ({ location }) => (
   <div className="notFound">
