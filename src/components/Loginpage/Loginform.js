@@ -1,19 +1,62 @@
 import React from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Alert } from 'antd';
 
 const FormItem = Form.Item;
 
 class NormalLoginForm extends React.Component {
+  state = {
+    modal: false
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props !== nextProps) {
+      if(nextProps.error) {
+        this.setState({
+          modal: true
+        })
+      }
+    }
+  }
+
+  _closeModal = () => {
+    this.setState({
+      modal: false
+    });
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
+      if(!err) {
+        let username = values.userName;
+        let password = values.password;
+        let loginResult = 'username not found';
+
+        if(this.props.message === 'fetch success') {
+          let userData = this.props.userData;
+
+          for(let i = 0; i < userData.length; i++) {
+            if(userData[i].username === username && userData[i].password === password) {
+              loginResult = 'success';
+            } else if(userData[i].username === username && userData[i].password !== password) {
+              loginResult = 'wrong password';
+            }
+          }
+        }
+
+        if(loginResult === 'success') {
+          this.props.login(true, false);
+        } else {
+          this.props.login(false, loginResult);
+        }
+
       }
     });
   }
+
   render() {
     const { getFieldDecorator } = this.props.form;
+
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <FormItem>
@@ -30,6 +73,9 @@ class NormalLoginForm extends React.Component {
             <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password" />
           )}
         </FormItem>
+        {this.state.modal &&
+          <Alert message={this.props.error} type="error" style={{ marginBottom: '1em' }} onClose={this._closeModal} showIcon closable/>
+        }
         <FormItem>
           {getFieldDecorator('remember', {
             valuePropName: 'checked',
