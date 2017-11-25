@@ -6,15 +6,15 @@ import { Button } from 'antd';
 import './Redirectpage.css';
 
 export const Redirectpage = () => {
-  return <Redirect to='/dashboard' />
+  return <Redirect to = '/dashboard' />
 }
 
 export const NoMatch = ({ location }) => (
-  <div className="notFound">
-    <h1 className="h1">404</h1>
-    <h3 className="h3">Uh oh, there is nothing here..</h3>
-    <Link to="/">
-      <Button type="primary" className="btn">Back to Home</Button>
+  <div className = 'notFound'>
+    <h1 className = 'h1'>404</h1>
+    <h3 className = 'h3'>Uh oh, there is nothing here..</h3>
+    <Link to = '/'>
+      <Button type = 'primary' className = 'btn'>Back to Home</Button>
     </Link>
   </div>
 );

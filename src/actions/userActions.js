@@ -23,6 +23,9 @@ export const fetchUser = () => {
 
 export const login = (result, error) => {
   return dispatch => {
-    dispatch({ type: 'LOGIN', payload: result, error: error})
+    dispatch({
+      type: 'LOGIN',
+      payload: result,
+      error: error})
   }
 }

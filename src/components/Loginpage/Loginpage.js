@@ -10,7 +10,7 @@ import Loginform from './Loginform';
 class Loginpage extends React.Component {
 
   componentDidMount() {
-    document.body.className = "loginpage";
+    document.body.className = 'loginpage';
 
     this.props.fetchUserData();
   }
@@ -18,14 +18,19 @@ class Loginpage extends React.Component {
   render() {
     if(checkLogin()) {
       return(
-        <Redirect to='/dashboard' />
+        <Redirect to = '/dashboard' />
       );
     }
 
     return (
-      <div className="form_container">
-        <h2 className="h2">Futsalio Admin</h2>
-        <Loginform userData = {this.props.data} message = {this.props.message} error = {this.props.error} login = {this.props.login}/>
+      <div className = 'form_container'>
+        <h2 className = 'h2'>Futsalio Admin</h2>
+        <Loginform
+          userData = {this.props.data}
+          message = {this.props.message}
+          error = {this.props.error}
+          login = {this.props.login}
+        />
       </div>
     );
   }
