@@ -51,3 +51,11 @@ export function isAdminFutsal() {
 
   return false;
 }
+
+export function getUserData() {
+  if(localStorage.getItem('futsalio')) {
+    return JSON.parse(localStorage.getItem('futsalio'));
+  }
+
+  return;
+}

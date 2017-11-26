@@ -21,11 +21,23 @@ export const fetchUser = () => {
   }
 }
 
-export const login = (result, error) => {
+export const login = (result, isLogin, error, errorCount) => {
   return dispatch => {
     dispatch({
       type: 'LOGIN',
       payload: result,
-      error: error})
+      isLogin: isLogin,
+      error: error,
+      errorCount: errorCount
+    })
+  }
+}
+
+export const loginWithLocalStorage = (data) => {
+  return dispatch => {
+    dispatch({
+      type: 'LOGIN_LOCALSTORAGE',
+      payload: data
+    })
   }
 }
