@@ -9,7 +9,7 @@ class NormalLoginForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(this.props.error !== nextProps.error) {
+    if(this.props.errorCount !== nextProps.errorCount) {
       if(nextProps.error) {
         this.setState({
           modal: true
@@ -31,6 +31,8 @@ class NormalLoginForm extends React.Component {
         let username = values.userName;
         let password = values.password;
         let loginResult = 'username not found';
+        let errorCount = this.props.errorCount;
+        let saveUserData;
 
         if(this.props.message === 'fetch success') {
           let userData = this.props.userData;
@@ -38,7 +40,7 @@ class NormalLoginForm extends React.Component {
           for(let i = 0; i < userData.length; i++) {
             if(userData[i].username === username && userData[i].password === password) {
               loginResult = 'success';
-              localStorage.setItem("futsalio", JSON.stringify(userData[i]));
+              saveUserData = userData[i];
             } else if(userData[i].username === username && userData[i].password !== password) {
               loginResult = 'wrong password';
             }
@@ -46,9 +48,10 @@ class NormalLoginForm extends React.Component {
         }
 
         if(loginResult === 'success') {
-          this.props.login(true, false);
+          localStorage.setItem("futsalio", JSON.stringify(saveUserData));
+          this.props.login(saveUserData, true, false, 0);
         } else {
-          this.props.login(false, loginResult);
+          this.props.login(null, false, loginResult, errorCount+1);
         }
 
       }

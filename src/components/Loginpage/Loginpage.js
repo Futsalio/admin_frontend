@@ -29,6 +29,7 @@ class Loginpage extends React.Component {
           userData = {this.props.data}
           message = {this.props.message}
           error = {this.props.error}
+          errorCount = {this.props.errorCount}
           login = {this.props.login}
         />
       </div>
@@ -38,19 +39,21 @@ class Loginpage extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.user.data,
-    fetching: state.user.fetching,
-    fetched: state.user.fetched,
-    error: state.user.error,
-    message: state.user.message,
-    isLogin: state.user.isLogin
+    data: state.userStore.data,
+    fetching: state.userStore.fetching,
+    fetched: state.userStore.fetched,
+    error: state.userStore.error,
+    errorCount: state.userStore.errorCount,
+    message: state.userStore.message,
+    isLogin: state.userStore.isLogin,
+    user: state.userStore.user
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchUserData: () => dispatch(fetchUser()),
-    login: (result, error) => dispatch(login(result, error))
+    login: (result, isLogin, error, errorCount) => dispatch(login(result, isLogin, error, errorCount))
   }
 };
 
