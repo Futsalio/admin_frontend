@@ -1,10 +1,15 @@
 import React from 'react';
-import { Layout, Menu, Icon, Button, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
 
 import './Dashboardpage.css';
-import { logout, getUserData } from '../../utils/auth';
+import { getUserData } from '../../utils/auth';
+import HeaderLayout from '../Common/HeaderLayout';
+import SidebarMenu from '../Common/SidebarMenu';
+import BreadcrumbLayout from '../Common/BreadcrumbLayout';
+import ContentLayout from './ContentLayout';
+import FooterLayout from '../Common/FooterLayout';
 
-const { Header, Sider, Content, Footer } = Layout;
+const { Sider, Content } = Layout;
 
 export default class Dashboardpage extends React.Component {
   state = {
@@ -27,47 +32,26 @@ export default class Dashboardpage extends React.Component {
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider
-          trigger={null}
+          trigger = {null}
           collapsible
-          collapsed={this.state.collapsed}
+          collapsed = {this.state.collapsed}
+          width = {260}
         >
-          <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span>nav 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span>nav 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="upload" />
-              <span>nav 3</span>
-            </Menu.Item>
-          </Menu>
+          <SidebarMenu />
         </Sider>
         <Layout>
-          <Header style={{ background: '#fff', padding: 0 }}>
-            <Icon
-              className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggle}
+          <HeaderLayout
+            toggle = {this.toggle}
+            collapsed = {this.state.collapsed}
+          />
+          <Content className = 'content'>
+            <BreadcrumbLayout
+              role = {data.role}
+              name = {data.name}
             />
-            <Button type = 'primary' onClick = {logout}>Logout</Button>
-          </Header>
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 1060 }}>
-              Bill is a cat.
-            </div>
+            <ContentLayout name = {data.name}/>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Futsalio ©2017 All Right Reserved
-          </Footer>
+          <FooterLayout />
         </Layout>
       </Layout>
     );

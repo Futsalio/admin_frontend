@@ -7,7 +7,7 @@ import enUS from 'antd/lib/locale-provider/en_US';
 
 import Store from './stores/index.js';
 import { checkLogin, isOwner, isAdminFutsal } from './utils/auth';
-import Redirectpage, { NoMatch } from './components/Redirectpage';
+import Redirectpage, { NoMatch } from './components/Common/Redirectpage';
 import Dashboardpage from './components/Dashboardpage/Dashboardpage';
 import Partnerpage from './components/Partnerpage/Partnerpage';
 import Loginpage from './components/Loginpage/Loginpage';

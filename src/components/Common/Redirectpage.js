@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 
 import './Redirectpage.css';
-import { loginWithLocalStorage } from '../actions/userActions';
-import { checkLogin } from '../utils/auth';
+import { loginWithLocalStorage } from '../../actions/userActions';
+import { checkLogin } from '../../utils/auth';
 
 const Redirectpage = (props) => {
   if(props.isLogin) {
