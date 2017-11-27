@@ -1,11 +1,13 @@
 const { injectBabelPlugin } = require('react-app-rewired');
 const rewireLess = require('react-app-rewire-less');
 
+const futsalio = '#FF4733';
+
 module.exports = function override(config, env) {
   config = injectBabelPlugin(['import', { libraryName: 'antd', style: true }], config);
   config = rewireLess.withLoaderOptions({
     modifyVars: {
-      "@primary-color": "#FF4D3D",
+      "@primary-color": futsalio,
       "@font-size-base": "14px",
       "@layout-body-background": "#f8f8f8",
       // "@layout-sider-background": "#555555",
