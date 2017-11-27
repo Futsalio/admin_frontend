@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 
-import { fetchUser, login } from '../../actions/userActions';
 import './Loginpage.css';
+import logo from '../../images/futsalio-76x76.png';
+import { fetchUser, login } from '../../actions/userActions';
 import { checkLogin } from '../../utils/auth';
 import Loginform from './Loginform';
 
@@ -24,7 +25,8 @@ class Loginpage extends React.Component {
 
     return (
       <div className = 'form_container'>
-        <h2 className = 'h2'>Futsalio Admin</h2>
+          <img src = {logo} alt = {'logo'} className = 'logo_float'/>
+          <h2 className = 'h2'>Futsalio Admin</h2>
         <Loginform
           userData = {this.props.data}
           message = {this.props.message}

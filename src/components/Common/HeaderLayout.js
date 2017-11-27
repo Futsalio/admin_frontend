@@ -16,7 +16,9 @@ export default class HeaderLayout extends React.Component {
           type = {this.props.collapsed ? 'menu-unfold' : 'menu-fold'}
           onClick = {this.props.toggle}
         />
-        <Button type = 'primary' onClick = {logout}>Logout</Button>
+        <div className = 'btnContainer'>
+          <Button ghost onClick = {logout} className = 'btn'>Logout</Button>
+        </div>
       </Header>
     );
   }

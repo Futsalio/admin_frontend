@@ -1,5 +1,5 @@
 .header {
-  background: #fff;
+  background: #FF4D3D;
   padding: 0;
 }
 
@@ -9,8 +9,23 @@
   padding: 0 16px;
   cursor: pointer;
   transition: color .3s;
+  color: white;
 }
 
 .trigger:hover {
-  color: #e64637;
+  color: #3C3C3C;
+}
+
+.btnContainer {
+  float: right;
+}
+
+.btn {
+  text-align: center;
+  margin-right: 1em;
+}
+
+.btn:hover {
+  color: #3C3C3C;
+  border-color: #3C3C3C;
 }

@@ -1,25 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Layout } from 'antd';
 
+import '../../utils/global.css';
 import './Dashboardpage.css';
+import { changeToggle } from '../../actions/utilActions';
 import { getUserData } from '../../utils/auth';
 import HeaderLayout from '../Common/HeaderLayout';
 import SidebarMenu from '../Common/SidebarMenu';
 import BreadcrumbLayout from '../Common/BreadcrumbLayout';
-import ContentLayout from './ContentLayout';
+import ContentDashboard from './ContentDashboard';
 import FooterLayout from '../Common/FooterLayout';
 
 const { Sider, Content } = Layout;
 
-export default class Dashboardpage extends React.Component {
-  state = {
-    collapsed: false,
-  };
-
+class Dashboardpage extends React.Component {
   toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
+    this.props.changeToggle(!this.props.collapsed, !this.props.sloganText);
   }
 
   componentDidMount() {
@@ -30,26 +27,29 @@ export default class Dashboardpage extends React.Component {
     let data = getUserData();
 
     return (
-      <Layout style={{ minHeight: '100vh' }}>
+      <Layout className = 'layout'>
         <Sider
           trigger = {null}
           collapsible
-          collapsed = {this.state.collapsed}
+          collapsed = {this.props.collapsed}
           width = {260}
         >
-          <SidebarMenu />
+          <SidebarMenu
+            sloganText = {this.props.sloganText}
+            sidebarKey = {'1'}
+          />
         </Sider>
         <Layout>
           <HeaderLayout
             toggle = {this.toggle}
-            collapsed = {this.state.collapsed}
+            collapsed = {this.props.collapsed}
           />
-          <Content className = 'content'>
+          <Content className = 'content_container'>
             <BreadcrumbLayout
               role = {data.role}
               name = {data.name}
             />
-            <ContentLayout name = {data.name}/>
+            <ContentDashboard name = {data.name}/>
           </Content>
           <FooterLayout />
         </Layout>
@@ -57,3 +57,18 @@ export default class Dashboardpage extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    collapsed: state.toggleStore.collapsed,
+    sloganText: state.toggleStore.sloganText
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeToggle: (collapsed, sloganText) => dispatch(changeToggle(collapsed, sloganText))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboardpage);

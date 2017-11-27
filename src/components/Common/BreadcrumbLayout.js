@@ -1,7 +1,7 @@
 import React from 'react';
 import { Breadcrumb } from 'antd';
 
-import './BreadcrumbLayout.css';
+import '../../utils/global.css';
 
 export default class BreadcrumbLayout extends React.Component {
   render() {
